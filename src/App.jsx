@@ -1,11 +1,13 @@
 import html2canvas from "html2canvas";
-import React from "react";
+import React, { useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const App = () => {
+  const [label, setLabel] = useState("");
+  const [labelsArr, setLabelsArr] = useState([]);
   const data = {
     labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
     datasets: [
@@ -60,7 +62,17 @@ const App = () => {
         Download as Image
       </button>
 
-      <div>I will not be in the image.</div>
+      <div>
+        <div>
+          <input
+            type="text"
+            name=""
+            onChange={(e) => setLabel(e.target.value)}
+          />
+          <input type="number" name="" id="" />
+          <input type="color" name="" id="" />
+        </div>
+      </div>
       <div ref={printRef}>
         <Pie data={data} />
       </div>
